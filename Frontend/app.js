@@ -13,8 +13,11 @@ client.connect( function(err, cl) {
 });
 
 // load routes: define controller which act on db
-let routes = require('./Routes/route1.js');
-routes(app, client);
+let routesDB = require('./Routes/routesDB.js');
+routesDB(app, client);
+
+let routes = require('./Routes/routes.js');
+routes(app, client)
 
 // run server  
 app.listen(port);
