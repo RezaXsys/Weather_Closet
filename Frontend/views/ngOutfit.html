@@ -1,0 +1,23 @@
+<!-- FILEPATH: /Users/TheresaHartmann/Documents/WeatherAppOriginal/Weather_Closet/Frontend/Views/basic.html -->
+<!DOCTYPE html>
+<html ng-app="angLocApp">
+
+<head>
+  <title>Weather app</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+  <script src="/ngOutfit.js"></script>
+</head>
+
+<body>
+  <h1>Gallery</h1>
+
+  <div ng-controller="OutfitListController">
+    <table>
+      <tr ng-repeat="outfit in outfits">
+        <td><img src="{{ outfit.img }}"></td>
+        <td>{{ outfit.weather }}</td>
+      </tr>
+    </table>
+</body>
+
+</html>

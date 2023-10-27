@@ -2,8 +2,9 @@ locApp = angular.module('angLocApp', []);
 
 locApp.controller('OutfitListController', function ($scope, $http) {
 
-    let URL_ALL_OUTFITS = "http://etu-web2:3010/getAllOutfits";
-    let URL_ONE_OUTFIT = "http://etu-web2:3010/getOutfit?";
+    //replace localhost with etu-web2 for it to work on the uni's computers
+    let URL_ALL_OUTFITS = "http://localhost:3010/getAllOutfits";
+    let URL_ONE_OUTFIT = "http://localhost:3010/getOutfit?";
 
     $scope.outfits = [];
 
