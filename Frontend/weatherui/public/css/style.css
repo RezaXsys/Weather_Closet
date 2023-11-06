@@ -58,6 +58,7 @@ p {
 .ghost-button {
   background-color: transparent;
   border: 2px solid #ddd;
+  border-radius: 10px;
   padding: 10px 30px;
   width: 100%;
   min-width: 350px;
@@ -73,5 +74,5 @@ p {
 }
 
 p {
-  color: #e64a19;
+  color: cornflowerblue;
 }
