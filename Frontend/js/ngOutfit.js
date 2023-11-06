@@ -12,5 +12,38 @@ locApp.controller('OutfitListController', function ($scope, $http) {
         $scope.outfits = response.data;
     });
 
+    $scope.image_gallery = {
+        "width": "80%",
+        "margin": "100px auto 50px",
+        "display": "grid",
+        "grid-template-columns": "repeat(auto-fit, minmax(250px, 1fr))",
+        "grid-gap": "30px",
+    }
+
+    $scope.image = {
+        "width": "100%",
+        "cursor": "pointer",
+        "transition": "1s ease",
+    }
+
+    $scope.imageWrapper = {
+        "width": "100%",
+        "height": "100vh",
+        "background-color": "rgba(0, 0, 0, 0.9)",
+        "position": "fixed",
+        "top": "0",
+        "left": "0",
+        "display": "none",
+        "justify-content": "center",
+        "align-items": "center",
+        "z-index": "100",
+    }
+
+    $scope.imageWrap = {
+        "width": "90%",
+        "max-width": "500px",
+    }
+
+
 });
 

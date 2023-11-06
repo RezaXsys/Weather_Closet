@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="angLocApp">
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="/ngOutfit.js"></script>
+    <title>Document</title>
+    <style></style>
+</head>
+
+<body>
+    <h1>Gallery</h1>
+
+    <div ng-controller="OutfitListController">
+        <div ng-style="imageWrapper" id="wrapper">
+            <img ng-style="imageWrap" ng-src="/asset/image_test.jpg">
+            <span>X</span>
+        </div>
+        <div ng-style="image_gallery">
+            <div ng-repeat="outfit in outfits">
+                <img ng-style="image" ng-src="{{ outfit.img }}">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let images = document.querySelectorAll("img");
+        let wrapper = document.getElementById("wrapper");
+        let imgwrapper = document.getElementById("fullImg");
+        let close = document.querySelector("span");
+
+        images.forEach((img, index) => {
+            img.addEventListener("click", () => {
+                openModal(`/asset/image_test.jpg`);
+            });
+        });
+        close.addEventListener("click", () => (wrapper.style.display = "none"));
+        function openModal(pic) {
+            wrapper.style.display = "flex";
+            imgWrapper.src = pic;
+        }
+    </script>
+
+</body>
+
+</html>
