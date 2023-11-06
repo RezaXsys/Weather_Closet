@@ -2,7 +2,11 @@
 Require application dependencies
 These are express, body-parser and request
 */
-
+/**
+ * TODO 1: make picture card at front end
+ * 2: connect with other page
+ * 3: Image Gallery to nav bar
+ */
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
@@ -46,6 +50,7 @@ app.post("/", function (req, res) {
       let weather = JSON.parse(body);
 
       console.log(weather);
+      // get it in python
       if (weather.main == undefined) {
         res.render("index", {
           weather: null,
