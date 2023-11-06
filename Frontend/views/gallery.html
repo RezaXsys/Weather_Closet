@@ -22,29 +22,13 @@
         </div>
         <div ng-style="image_gallery">
             <div ng-repeat="outfit in outfits">
-                <img ng-style="image" ng-src="{{ outfit.img }}">
+                <img ng-style="image" id="img-" ng-src="{{ outfit.img }}">
             </div>
         </div>
 
     </div>
 
-    <script>
-        let images = document.querySelectorAll("img");
-        let wrapper = document.getElementById("wrapper");
-        let imgwrapper = document.getElementById("fullImg");
-        let close = document.querySelector("span");
-
-        images.forEach((img, index) => {
-            img.addEventListener("click", () => {
-                openModal(`/asset/image_test.jpg`);
-            });
-        });
-        close.addEventListener("click", () => (wrapper.style.display = "none"));
-        function openModal(pic) {
-            wrapper.style.display = "flex";
-            imgWrapper.src = pic;
-        }
-    </script>
+    <script src="js/gallery.js"></script>
 
 </body>
 

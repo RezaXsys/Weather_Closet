@@ -8,13 +8,6 @@ module.exports = (app, client) => {
         }
     );
 
-    app.get('/css',
-        function (req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.sendFile(__dirname + '/asset/css/style.css');
-        }
-    );
-
     app.get('/Gallery',
         function (req, res) {
             res.setHeader('Content-Type', 'text/html');

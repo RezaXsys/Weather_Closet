@@ -12,6 +12,8 @@ locApp.controller('OutfitListController', function ($scope, $http) {
         $scope.outfits = response.data;
     });
 
+
+
     $scope.image_gallery = {
         "width": "80%",
         "margin": "100px auto 50px",

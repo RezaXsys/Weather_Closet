@@ -21,7 +21,5 @@ routesDB(app, client);
 let routes = require('./routes.js');
 routes(app, client)
 
-
-
 // run server  
 app.listen(port);
