@@ -10,6 +10,7 @@ locApp.controller('OutfitListController', function ($scope, $http) {
 
     $http.get(URL_ALL_OUTFITS).then(function (response) {
         $scope.outfits = response.data;
+        console.log(response)
     });
 
     $scope.zoom = function (path) {

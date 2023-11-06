@@ -15,42 +15,21 @@ module.exports = (app, client) => {
             if (err) throw err;
             const db = cl.db('ClothingStorage');
             db.collection("outfits").deleteMany({});
-            db.collection("outfits").insertOne({
-                "img": '/asset/image1.jpg',
-                "weather": {
-                    "temperature": 15,
-                    "description": "Sunny",
-                    "feelslike": 12,
-                    "uv_index": 4,
-                    "wind_speed": 10,
-                    "precip": 0
-                },
-                "favorite": 0
-            });
-            db.collection("outfits").insertOne({
-                "img": '/asset/image2.jpg',
-                "weather": {
-                    "temperature": 15,
-                    "description": "Sunny",
-                    "feelslike": 12,
-                    "uv_index": 4,
-                    "wind_speed": 10,
-                    "precip": 0
-                },
-                "favorite": 0
-            });
-            db.collection("outfits").insertOne({
-                "img": '/asset/image3.jpg',
-                "weather": {
-                    "temperature": 15,
-                    "description": "Sunny",
-                    "feelslike": 12,
-                    "uv_index": 4,
-                    "wind_speed": 10,
-                    "precip": 0
-                },
-                "favorite": 0
-            });
+            for (i = 0; i < 5; i++) {
+                db.collection("outfits").insertOne({
+                    "img": '/asset/image' + i + '.jpg',
+                    "weather": {
+                        "temperature": 15,
+                        "description": "Sunny",
+                        "feelslike": 12,
+                        "uv_index": 4,
+                        "wind_speed": 10,
+                        "precip": 0
+                    },
+                    "favorite": 0
+                });
+            }
+
         })
     });
 
