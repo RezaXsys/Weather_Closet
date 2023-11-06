@@ -15,7 +15,7 @@ module.exports = (app, client) => {
             if (err) throw err;
             const db = cl.db('ClothingStorage');
             db.collection("outfits").insertOne({
-                "img": "/asset/image_test.jpg",
+                "img": '/asset/image_test.jpg',
                 "weather": {
                     "temperature": 15,
                     "description": "Sunny",

@@ -14,10 +14,12 @@
   <div ng-controller="OutfitListController">
     <table>
       <tr ng-repeat="outfit in outfits">
-        <td><img src="{{ outfit.img }}"></td>
+        <td><img style="max-width: 100px;" ng-src="{{ outfit.img }}"></td>
+        <td>{{ outfit.img }}</td>
         <td>{{ outfit.weather }}</td>
       </tr>
     </table>
+  </div>
 </body>
 
 </html>

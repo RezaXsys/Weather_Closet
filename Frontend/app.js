@@ -12,12 +12,16 @@ client.connect(function (err, cl) {
     console.log('Connected!');
 });
 
+app.use(express.static('Frontend'));
+
 //load routes: define controller which act on db
 let routesDB = require('./routesDB.js');
 routesDB(app, client);
 
 let routes = require('./routes.js');
 routes(app, client)
+
+
 
 // run server  
 app.listen(port);
