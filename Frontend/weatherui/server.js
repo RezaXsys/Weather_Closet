@@ -15,7 +15,7 @@ const API_KEY = "f47eedb5435ca918b1ff4d802318da60";
 
 // Configure dotenv packagae
 require("dotenv").config();
-
+app.use(express.static("public"));
 // API  KEY
 
 const apiKey = "${process.env.API_KEY}";
