@@ -17,18 +17,17 @@
 
     <div ng-controller="OutfitListController">
         <div ng-style="imageWrapper" id="wrapper">
-            <img ng-style="imageWrap" ng-src="/asset/image_test.jpg">
-            <span>X</span>
+            <img ng-style="imageWrap" id="imgWrapper">
+            <span ng-click="close()" ng-style="spanX">X</span>
         </div>
         <div ng-style="image_gallery">
             <div ng-repeat="outfit in outfits">
-                <img ng-style="image" id="img-" ng-src="{{ outfit.img }}">
+                <img ng-style="image" ng-click="zoom(outfit.img)" ng-src="{{ outfit.img }}">
             </div>
+
         </div>
 
-    </div>
-
-    <script src="js/gallery.js"></script>
+        <script src="js/gallery.js"></script>
 
 </body>
 

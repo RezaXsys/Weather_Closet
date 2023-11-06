@@ -12,7 +12,14 @@ locApp.controller('OutfitListController', function ($scope, $http) {
         $scope.outfits = response.data;
     });
 
+    $scope.zoom = function (path) {
+        wrapper.style.display = "flex";
+        imgWrapper.src = path;
+    };
 
+    $scope.close = function () {
+        wrapper.style.display = "none";
+    }
 
     $scope.image_gallery = {
         "width": "80%",
@@ -44,6 +51,16 @@ locApp.controller('OutfitListController', function ($scope, $http) {
     $scope.imageWrap = {
         "width": "90%",
         "max-width": "500px",
+    }
+
+    $scope.spanX = {
+        "position": "absolute",
+        "top": "5%",
+        "right": "5%",
+        "font-size": "30px",
+        "color": "#fff",
+        "cursor": "pointer",
+        "font-family": "sans-serif",
     }
 
 

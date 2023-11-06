@@ -14,8 +14,9 @@ module.exports = (app, client) => {
         client.connect(function (err, cl) {
             if (err) throw err;
             const db = cl.db('ClothingStorage');
+            db.collection("outfits").deleteMany({});
             db.collection("outfits").insertOne({
-                "img": '/asset/image_test.jpg',
+                "img": '/asset/image1.jpg',
                 "weather": {
                     "temperature": 15,
                     "description": "Sunny",
@@ -26,16 +27,29 @@ module.exports = (app, client) => {
                 },
                 "favorite": 0
             });
-        })
-    });
-
-    app.get('/showImageTest', function (req, res) {
-        client.connect(function (err, cl) {
-            if (err) throw err;
-            const db = cl.db('ClothingStorage');
-            db.collection("outfits").find({ "img": "/asset/image_test.jpg" }).toArray((err, result) => {
-                if (err) throw err;
-                res.json(result);
+            db.collection("outfits").insertOne({
+                "img": '/asset/image2.jpg',
+                "weather": {
+                    "temperature": 15,
+                    "description": "Sunny",
+                    "feelslike": 12,
+                    "uv_index": 4,
+                    "wind_speed": 10,
+                    "precip": 0
+                },
+                "favorite": 0
+            });
+            db.collection("outfits").insertOne({
+                "img": '/asset/image3.jpg',
+                "weather": {
+                    "temperature": 15,
+                    "description": "Sunny",
+                    "feelslike": 12,
+                    "uv_index": 4,
+                    "wind_speed": 10,
+                    "precip": 0
+                },
+                "favorite": 0
             });
         })
     });
