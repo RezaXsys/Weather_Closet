@@ -26,7 +26,7 @@ locApp.controller('OutfitListController', function ($scope, $http) {
     $scope.takePhoto = function () {
         //run the python script
         $.ajax({
-            url: "/python",
+            url: "http://localhost:5000/home",
             context: document.body,
             success: function (response) {
                 output = response;
