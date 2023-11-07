@@ -4,7 +4,8 @@ let port = 3010;
 
 const MongoClient = require('mongodb/lib/mongo_client');
 const mongoClient = require('mongodb').MongoClient;
-let client = new MongoClient('mongodb://localhost:27017/ClothingStorage');
+// etu-web2.ut-capitole.fr if with raspberry, localhost if on computer
+let client = new MongoClient('mongodb://etu-web2.ut-capitole.fr:27017/ClothingStorage');
 
 client.connect(function (err, cl) {
     if (err) throw err;

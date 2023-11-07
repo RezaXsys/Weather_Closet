@@ -34,8 +34,17 @@ def savePic(picName):
     db = client["ClothingStorage"]
     collection = db["outfits"]
     json = {
-        "img": '/asset' + picName,
+        "img": '/asset/' + picName,
         "city": "Toulouse",
-        # weather data
+        "weather": {
+            "temperature": 15,
+            "description": "Sunny",
+            "feelslike": 12,
+            "uv_index": 4,
+            "wind_speed": 10,
+            "precip": 0
+        },
+        "favorite": 0,
+        "user": 0,
     }
     print(db.collection.insert_one(json))

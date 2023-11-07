@@ -15,10 +15,4 @@ module.exports = (app, client) => {
         }
     );
 
-    app.get('/python',
-        function (req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.sendFile(__dirname + '/asset' + '/test1.py');
-        }
-    );
 };

@@ -26,10 +26,23 @@ module.exports = (app, client) => {
                         "wind_speed": 10,
                         "precip": 0
                     },
-                    "favorite": 0
+                    "favorite": 0,
+                    "user": 0,
                 });
             }
-
+            db.collection("outfits").insertOne({
+                "img": '/asset/image.jpg',
+                "weather": {
+                    "temperature": 15,
+                    "description": "Sunny",
+                    "feelslike": 12,
+                    "uv_index": 4,
+                    "wind_speed": 10,
+                    "precip": 0
+                },
+                "favorite": 0,
+                "user": 0,
+            });
         })
     });
 
@@ -48,7 +61,6 @@ module.exports = (app, client) => {
         res.setHeader('Content-Type', 'application/javascript');
         res.sendFile(__dirname + '/js' + '/ngOutfit.js');
     });
-
 
 };
 

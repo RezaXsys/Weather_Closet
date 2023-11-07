@@ -2,10 +2,10 @@ locApp = angular.module('angLocApp', []);
 
 locApp.controller('OutfitListController', function ($scope, $http) {
 
-    //replace localhost with etu-web2 for it to work on the uni's computers
-    let URL_ALL_OUTFITS = "http://localhost:3010/getAllOutfits";
-    let URL_ONE_OUTFIT = "http://localhost:3010/getOutfit?";
-    let URL_ID_OUTFITS = "http://localhost:3010/getOutfits?";
+    //replace localhost with etu-web2 for it to work on the uni's computers or 10.12.220.127 on rpi
+    let URL_ALL_OUTFITS = "http://10.12.220.127:3010/getAllOutfits";
+    let URL_ONE_OUTFIT = "http://10.12.220.127.fr:3010/getOutfit?";
+    let URL_ID_OUTFITS = "http://10.12.220.127.fr:3010/getOutfits?";
 
     $scope.outfits = [];
 
@@ -24,9 +24,8 @@ locApp.controller('OutfitListController', function ($scope, $http) {
     }
 
     $scope.takePhoto = function () {
-        //run the python script
         $.ajax({
-            url: "http://localhost:5000/home",
+            url: "http://localhost:5000/takePicture",
             context: document.body,
             success: function (response) {
                 output = response;
