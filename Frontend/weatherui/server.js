@@ -21,7 +21,7 @@ app.use(express.static("public"));
 const apiKey = "${process.env.API_KEY}";
 
 // view engine
-
+app.use(express.static(__dirname + "/Frontend/weatherui/views"));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");

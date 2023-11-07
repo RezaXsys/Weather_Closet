@@ -27,8 +27,10 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
   </head>
   <body>
+
     <!-- Main Container -->
     <!-- start Navbar-->
     <nav class="navigationWrapper">
@@ -36,10 +38,12 @@
         <span class="stylish">WEATHER</span>
         <span class="logo">Closet</span>
       </div>
-      <ul class="navigation">
-        <li class="parent"><a class="link" href="#">Gallery</a></li>
-        <li class="parent"><a class="link" href="#">About</a></li>
-      </ul>
+      <div class="navigation">
+          <li class="listitem" onclick="openGallery()">Gallery</li>
+          <li class="listitem" onclick="openAbout()">About</li>
+        
+      </div>
+  
     </nav>
     <!-- End of Navbar -->
     <div class="container">
@@ -142,5 +146,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="index.js" ></script>
+
   </body>
 </html>
