@@ -14,4 +14,11 @@ module.exports = (app, client) => {
             res.sendFile(__dirname + '/views' + '/gallery.html');
         }
     );
+
+    app.get('/python',
+        function (req, res) {
+            res.setHeader('Content-Type', 'text/html');
+            res.sendFile(__dirname + '/asset' + '/test1.py');
+        }
+    );
 };

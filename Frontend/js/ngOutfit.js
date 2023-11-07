@@ -5,6 +5,7 @@ locApp.controller('OutfitListController', function ($scope, $http) {
     //replace localhost with etu-web2 for it to work on the uni's computers
     let URL_ALL_OUTFITS = "http://localhost:3010/getAllOutfits";
     let URL_ONE_OUTFIT = "http://localhost:3010/getOutfit?";
+    let URL_ID_OUTFITS = "http://localhost:3010/getOutfits?";
 
     $scope.outfits = [];
 
@@ -20,6 +21,20 @@ locApp.controller('OutfitListController', function ($scope, $http) {
 
     $scope.close = function () {
         wrapper.style.display = "none";
+    }
+
+    $scope.takePhoto = function () {
+        //run the python script
+        $.ajax({
+            url: "/python",
+            context: document.body,
+            success: function (response) {
+                output = response;
+                alert(output)
+            }
+        }).done(function () {
+            console.log('finished python script');;
+        })
     }
 
     $scope.image_gallery = {
@@ -64,6 +79,15 @@ locApp.controller('OutfitListController', function ($scope, $http) {
         "font-family": "sans-serif",
     }
 
+    $scope.photo_button = {
+        "background-color": "gray",
+        "width": "200px",
+
+    }
+
+    $scope.img_button = {
+        "height": "50px",
+    }
 
 });
 

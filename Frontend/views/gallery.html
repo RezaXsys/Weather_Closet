@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/ngOutfit.js"></script>
     <title>Document</title>
     <style></style>
@@ -26,6 +27,13 @@
             </div>
 
         </div>
+
+        <button ng-style="photo_button" ng-click="takePhoto()">
+            <img ng-style="img_button" src="asset/camera.png">
+        </button>
+
+
+    </div>
 </body>
 
 </html>
