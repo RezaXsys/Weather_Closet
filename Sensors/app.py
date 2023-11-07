@@ -8,10 +8,10 @@ app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 
-@app.route('/home')
+@app.route('/takePicture')
 @cross_origin()
-def home():
+def takePicture():
     picName = "image.jpg"
     takePic(picName)
     savePic(picName)
-    return "hello world 3"
+    return "Picture taken"
