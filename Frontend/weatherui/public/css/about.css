@@ -1,12 +1,21 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
+    Helvetica, sans-serif;
   margin: 0;
+  background: linear-gradient(to bottom, cornflowerblue, white);
 }
 
 html {
   box-sizing: border-box;
 }
-
+.ourteam {
+  color: whitesmoke;
+  text-align: center;
+}
+.image {
+  border-radius: 5px;
+  width: 100%;
+}
 *,
 *:before,
 *:after {
@@ -23,9 +32,9 @@ html {
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   margin: 8px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .about-section {
@@ -34,7 +43,6 @@ html {
 
   background-size: cover;
   color: whitesmoke;
-  background-color: cornflowerblue;
 }
 
 .container {

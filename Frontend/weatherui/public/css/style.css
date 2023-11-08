@@ -1,15 +1,24 @@
 body {
   width: auto;
+  height: 100%;
   margin: 0 auto;
   font-family: "Open Sans", sans-serif;
+  /* added background color */
 }
-
+.container1 {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: blue;
+}
 .container {
   width: 80%;
   margin: 0 auto;
+  background: transparent;
 }
 
 fieldset {
+  background: transparent;
   display: block;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
