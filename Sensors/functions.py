@@ -28,9 +28,11 @@ def takePic(picName):
     f.write(byteArr)
     f.close()
 
+# etu-web2.ut-capitole.fr if with raspberry, localhost if on computer
+
 
 def savePic(picName):
-    client = pymongo.MongoClient("mongodb://etu-web2:27017/")
+    client = pymongo.MongoClient("mongodb://etu-web2.ut-capitole.fr:27017/")
     db = client["ClothingStorage"]
     collection = db["outfits"]
     json = {
@@ -47,4 +49,4 @@ def savePic(picName):
         "favorite": 0,
         "user": 0,
     }
-    print(db.collection.insert_one(json))
+    print(collection.insert_one(json))

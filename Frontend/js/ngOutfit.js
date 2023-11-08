@@ -30,6 +30,7 @@ locApp.controller('OutfitListController', function ($scope, $http) {
             success: function (response) {
                 output = response;
                 alert(output)
+                location.reload()
             }
         }).done(function () {
             console.log('finished python script');;
