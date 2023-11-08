@@ -81,11 +81,13 @@
     <div ng-controller="OutfitListController">
         <div ng-style="imageWrapper" id="wrapper">
             <img ng-style="imageWrap" id="imgWrapper">
+            <div id="caption" ng-style="caption"></div>
             <span ng-click="close()" ng-style="spanX">X</span>
         </div>
         <div ng-style="image_gallery">
             <div ng-repeat="outfit in outfits">
-                <img ng-style="image" ng-click="zoom(outfit.img)" ng-src="{{ outfit.img }}" alt="">
+                <img ng-style="image" ng-click="zoom(outfit.img, outfit.weather)" ng-src="{{ outfit.img }}"
+                    alt="{{ outfit.weather }}">
             </div>
 
         </div>

@@ -14,9 +14,11 @@ locApp.controller('OutfitListController', function ($scope, $http) {
         console.log(response)
     });
 
-    $scope.zoom = function (path) {
+    $scope.zoom = function (path, alt) {
         wrapper.style.display = "flex";
         imgWrapper.src = path;
+        var captionText = document.getElementById("caption");
+        captionText.innerHTML = alt.description + ", " + alt.temperature + "°C";
     };
 
     $scope.close = function () {
@@ -76,6 +78,15 @@ locApp.controller('OutfitListController', function ($scope, $http) {
         "font-size": "30px",
         "color": "#fff",
         "cursor": "pointer",
+        "font-family": "sans-serif",
+    }
+
+    $scope.caption = {
+        "position": "absolute",
+        "top": "20%",
+        "right": "5%",
+        "font-size": "30px",
+        "color": "#fff",
         "font-family": "sans-serif",
     }
 

@@ -19,13 +19,13 @@ import requests, json
 
 def takePic(picName):
     os.system(
-        "raspistill -v -o /home/pi/Documents/Weather_Closet/Frontend/asset/" + picName)
-    f = open("/home/pi/Documents/Weather_Closet/Frontend/asset/" +
+        "raspistill -v -o /home/pi/Documents/Weather_Closet/Frontend/public/asset/" + picName)
+    f = open("/home/pi/Documents/Weather_Closet/Frontend/public/asset/" +
              picName, "rb")  # 3.7kiB in same folder
     fileContent = f.read()
     byteArr = bytearray(fileContent)
     f.close()
-    f = open("/home/pi/Documents/Weather_Closet/Frontend/asset/" + picName, "wb")
+    f = open("/home/pi/Documents/Weather_Closet/Frontend/public/asset/" + picName, "wb")
     f.write(byteArr)
     f.close()
 
@@ -40,9 +40,9 @@ def savePic(picName, weather):
         "img": '/asset/' + picName,
         "city": "Toulouse",
         "weather": {
-            "temperature": weather["main"]["temp"],
+            "temperature": round(weather["main"]["temp"]),
             "description": weather["weather"][0]["main"],
-            "feelslike": weather["main"]["feels_like"],
+            "feelslike": round(weather["main"]["feels_like"]),
             "wind_speed": weather["wind"]["speed"],
         },
         "favorite": 0,
