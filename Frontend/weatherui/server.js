@@ -119,7 +119,7 @@ app.get("/Gallery", function (req, res) {
 });
 //signin page: 127.0.0.1:10002/signin
 app.get("/About", function (req, res) {
-  res.render("about.ejs");
+  res.render("about2.ejs");
 });
 
 app.get("/Index", function (req, res) {
