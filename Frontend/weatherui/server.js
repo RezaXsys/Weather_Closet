@@ -121,3 +121,7 @@ app.get("/Gallery", function (req, res) {
 app.get("/About", function (req, res) {
   res.render("about.ejs");
 });
+
+app.get("/Index", function (req, res) {
+  res.render("index.ejs", { weather: null, error: null });
+});

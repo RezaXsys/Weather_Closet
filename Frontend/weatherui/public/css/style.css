@@ -130,3 +130,36 @@ p {
     }
   }
 }
+a:link {
+  color: cornflowerblue; /* Default link color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:visited {
+  color: cornflowerblue; /* Color for visited links */
+}
+
+/* styles.css */
+.profile {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile h2 {
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+.profile p {
+  font-size: 1.1em;
+  margin: 10px 0;
+}
