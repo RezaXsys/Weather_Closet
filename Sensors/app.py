@@ -15,5 +15,11 @@ def takePicture():
     picName = str(datetime.now().strftime('%Y-%m-%d-%H:%M:%S')) + ".jpg"
     print(picName)
     takePic(picName)
-    savePic(picName)
+    savePic(picName, weather())
     return "Picture taken"
+
+@app.route('/getWeather')
+@cross_origin()
+def getWeather():
+    data = str(weather())
+    return data
