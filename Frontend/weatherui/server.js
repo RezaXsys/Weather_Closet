@@ -2,6 +2,23 @@
 Require application dependencies
 These are express, body-parser and request
 */
+const images = [
+  {
+    url: "Frontend/asset/weatherui/Assets/clear.png",
+    alt: "Image 1",
+    caption: "A beautiful sunset",
+  },
+  {
+    url: "Frontend/asset/weatherui/Assets/drizzle.png",
+    alt: "Image 2",
+    caption: "Snowy mountains",
+  },
+  {
+    url: "Frontend/asset/weatherui/Assets/snow.png",
+    alt: "Image 3",
+    caption: "City lights",
+  },
+];
 /**
  * TODO 1: make picture card at front end
  * 2: connect with other page
@@ -96,4 +113,11 @@ app.post("/", function (req, res) {
       }
     }
   });
+});
+app.get("/Gallery", function (req, res) {
+  res.render("gallery.ejs", { images });
+});
+//signin page: 127.0.0.1:10002/signin
+app.get("/About", function (req, res) {
+  res.render("about.ejs");
 });
