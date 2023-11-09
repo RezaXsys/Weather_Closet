@@ -13,6 +13,8 @@ module.exports = (app, client) => {
   app.post("/", function (req, res) {
     let city = req.body.city;
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`;
+    let weather; // Declare weather variable here
+    let weatherFahrenheit; // Declare weatherFahrenheit here
 
     // Request for data using the url
     request(url, function (err, response, body) {
@@ -23,7 +25,7 @@ module.exports = (app, client) => {
           error: "Error, please tray again",
         });
       } else {
-        let weather = JSON.parse(body);
+        weather = JSON.parse(body);
 
         console.log(weather);
         // get it in python
@@ -34,6 +36,7 @@ module.exports = (app, client) => {
           });
         } else {
           let place = `${weather.name}, ${weather.sys.country}`;
+
           let weatherTimezone = `${new Date(
             weather.dt * 1000 - weather.timezone * 1000
           )}`;
@@ -45,15 +48,15 @@ module.exports = (app, client) => {
             humidity = `${weather.main.humidity}`,
             clouds = `${weather.clouds.all}`,
             visibility = `${weather.visibility}`,
-            main = `${weather.weather[0].main}`,
-            weatherFahrenheit;
+            main = `${weather.weather[0].main}`;
           weatherFahrenheit = (weatherTemp * 9) / 5 + 32;
+          weatherFahrenheit = roundToTwo(weatherFahrenheit);
           // you shall also round off the value of the degrees fahrenheit calculated into two decimal places
 
           function roundToTwo(num) {
             return +(Math.round(num + "e+2") + "e-2");
           }
-          let weather = JSON.parse(body);
+          //let weather = JSON.parse(body);
 
           client.connect(function (err, cl) {
             if (err) throw err;
@@ -77,7 +80,6 @@ module.exports = (app, client) => {
                   imagePathFromDatabase = result[0].img;
                 }
 
-                const weatherFahrenheit = roundToTwo(weatherFahrenheit);
                 res.render("index", {
                   weather: weather,
                   place: place,
@@ -96,25 +98,6 @@ module.exports = (app, client) => {
                 });
               });
           });
-          /*
-          const imagePathFromDatabase = "/path/to/your/image.jpg";
-          weatherFahrenheit = roundToTwo(weatherFahrenheit);
-          res.render("index", {
-            weather: weather,
-            place: place,
-            temp: weatherTemp,
-            pressure: weatherPressure,
-            icon: weatherIcon,
-            description: weatherDescription,
-            timezone: weatherTimezone,
-            humidity: humidity,
-            fahrenheit: weatherFahrenheit,
-            clouds: clouds,
-            visibility: visibility,
-            main: main,
-            error: null,
-            imagePathFromDatabase,
-          });*/
         }
       }
     });
