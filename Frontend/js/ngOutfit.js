@@ -1,93 +1,120 @@
-locApp = angular.module('angLocApp', []);
+locApp = angular.module("angLocApp", []);
 
-locApp.controller('OutfitListController', function ($scope, $http) {
+locApp.controller("OutfitListController", function ($scope, $http) {
+  //replace localhost with etu-web2 for it to work on the uni's computers or 10.12.220.127 on rpi
+  let URL_ALL_OUTFITS = "http://10.12.220.127:3010/getAllOutfits";
+  let URL_ONE_OUTFIT = "http://10.12.220.127.fr:3010/getOutfit?";
+  let URL_ID_OUTFITS = "http://10.12.220.127.fr:3010/getOutfits?";
+  let URL_CERTAIN_OUTFITS = "http://10.12.220.127.fr:3010/getOutfits?";
 
-    //replace localhost with etu-web2 for it to work on the uni's computers or 10.12.220.127 on rpi
-    let URL_ALL_OUTFITS = "http://10.12.220.127:3010/getAllOutfits";
-    let URL_ONE_OUTFIT = "http://10.12.220.127.fr:3010/getOutfit?";
-    let URL_ID_OUTFITS = "http://10.12.220.127.fr:3010/getOutfits?";
+  $scope.outfits = [];
 
-    $scope.outfits = [];
+  $http.get(URL_ALL_OUTFITS).then(function (response) {
+    $scope.outfits = response.data;
+    console.log(response);
+  });
 
-    $http.get(URL_ALL_OUTFITS).then(function (response) {
+  // Space for function depending on weather conditions
+  /*
+  $scope.newLocation = function() {
+		let newRawLoc = {};
+		let newLoc ={};
+		$http.get(URL_INSERT_LOC + `newAddress=${$scope.newAddress}&newCity=${$scope.newCity}`)
+			.then(function (response) {
+				newRawLoc = response.data;
+				
+				newLoc = {"locId": newRawLoc.id, "locAddress": newRawLoc.address, 
+									"city": newRawLoc.city};
+		
+
+				$scope.locations.push(newLoc);
+			});
+	}
+  */
+
+  $scope.getOutfitsByWeather = function () {
+    $http
+      .get(
+        URL_CERTAIN_OUTFITS + `temp=${$scope.temp}&weather=${$scope.weather}`
+      )
+      .then(function (response) {
         $scope.outfits = response.data;
-        console.log(response)
+      });
+  };
+  // Call the function when needed, for example, on button click
+  $scope.getOutfitsByWeather();
+
+  $scope.zoom = function (path) {
+    wrapper.style.display = "flex";
+    imgWrapper.src = path;
+  };
+
+  $scope.close = function () {
+    wrapper.style.display = "none";
+  };
+
+  $scope.takePhoto = function () {
+    $.ajax({
+      url: "http://localhost:5000/takePicture",
+      context: document.body,
+      success: function (response) {
+        output = response;
+        alert(output);
+        location.reload();
+      },
+    }).done(function () {
+      console.log("finished python script");
     });
+  };
 
-    $scope.zoom = function (path) {
-        wrapper.style.display = "flex";
-        imgWrapper.src = path;
-    };
+  $scope.image_gallery = {
+    width: "80%",
+    margin: "100px auto 50px",
+    display: "grid",
+    "grid-template-columns": "repeat(auto-fit, minmax(250px, 1fr))",
+    "grid-gap": "30px",
+  };
 
-    $scope.close = function () {
-        wrapper.style.display = "none";
-    }
+  $scope.image = {
+    width: "100%",
+    cursor: "pointer",
+    transition: "1s ease",
+  };
 
-    $scope.takePhoto = function () {
-        $.ajax({
-            url: "http://localhost:5000/takePicture",
-            context: document.body,
-            success: function (response) {
-                output = response;
-                alert(output)
-                location.reload()
-            }
-        }).done(function () {
-            console.log('finished python script');;
-        })
-    }
+  $scope.imageWrapper = {
+    width: "100%",
+    height: "100vh",
+    "background-color": "rgba(0, 0, 0, 0.9)",
+    position: "fixed",
+    top: "0",
+    left: "0",
+    display: "none",
+    "justify-content": "center",
+    "align-items": "center",
+    "z-index": "100",
+  };
 
-    $scope.image_gallery = {
-        "width": "80%",
-        "margin": "100px auto 50px",
-        "display": "grid",
-        "grid-template-columns": "repeat(auto-fit, minmax(250px, 1fr))",
-        "grid-gap": "30px",
-    }
+  $scope.imageWrap = {
+    width: "90%",
+    "max-width": "500px",
+  };
 
-    $scope.image = {
-        "width": "100%",
-        "cursor": "pointer",
-        "transition": "1s ease",
-    }
+  $scope.spanX = {
+    position: "absolute",
+    top: "5%",
+    right: "5%",
+    "font-size": "30px",
+    color: "#fff",
+    cursor: "pointer",
+    "font-family": "sans-serif",
+  };
 
-    $scope.imageWrapper = {
-        "width": "100%",
-        "height": "100vh",
-        "background-color": "rgba(0, 0, 0, 0.9)",
-        "position": "fixed",
-        "top": "0",
-        "left": "0",
-        "display": "none",
-        "justify-content": "center",
-        "align-items": "center",
-        "z-index": "100",
-    }
+  $scope.photo_button = {
+    "background-color": "gray",
+    width: "200px",
+  };
 
-    $scope.imageWrap = {
-        "width": "90%",
-        "max-width": "500px",
-    }
-
-    $scope.spanX = {
-        "position": "absolute",
-        "top": "5%",
-        "right": "5%",
-        "font-size": "30px",
-        "color": "#fff",
-        "cursor": "pointer",
-        "font-family": "sans-serif",
-    }
-
-    $scope.photo_button = {
-        "background-color": "gray",
-        "width": "200px",
-
-    }
-
-    $scope.img_button = {
-        "height": "50px",
-    }
-
+  $scope.img_button = {
+    height: "50px",
+  };
 });
-
