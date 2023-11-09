@@ -98,25 +98,6 @@ module.exports = (app, client) => {
                 });
               });
           });
-          /*
-          const imagePathFromDatabase = "/path/to/your/image.jpg";
-          weatherFahrenheit = roundToTwo(weatherFahrenheit);
-          res.render("index", {
-            weather: weather,
-            place: place,
-            temp: weatherTemp,
-            pressure: weatherPressure,
-            icon: weatherIcon,
-            description: weatherDescription,
-            timezone: weatherTimezone,
-            humidity: humidity,
-            fahrenheit: weatherFahrenheit,
-            clouds: clouds,
-            visibility: visibility,
-            main: main,
-            error: null,
-            imagePathFromDatabase,
-          });*/
         }
       }
     });
