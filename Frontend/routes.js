@@ -53,6 +53,8 @@ module.exports = (app, client) => {
           function roundToTwo(num) {
             return +(Math.round(num + "e+2") + "e-2");
           }
+
+          const imagePathFromDatabase = "/path/to/your/image.jpg";
           weatherFahrenheit = roundToTwo(weatherFahrenheit);
           res.render("index", {
             weather: weather,
@@ -68,6 +70,7 @@ module.exports = (app, client) => {
             visibility: visibility,
             main: main,
             error: null,
+            imagePathFromDatabase,
           });
         }
       }
