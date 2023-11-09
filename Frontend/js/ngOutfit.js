@@ -3,46 +3,19 @@ locApp = angular.module("angLocApp", []);
 locApp.controller("OutfitListController", function ($scope, $http) {
   //replace localhost with etu-web2 for it to work on the uni's computers or 10.12.220.127 on rpi
   let URL_ALL_OUTFITS = "http://10.12.220.127:3010/getAllOutfits";
-  let URL_ONE_OUTFIT = "http://10.12.220.127.fr:3010/getOutfit?";
-  let URL_ID_OUTFITS = "http://10.12.220.127.fr:3010/getOutfits?";
-  let URL_CERTAIN_OUTFITS = "http://10.12.220.127.fr:3010/getOutfits?";
+  let URL_ONE_OUTFIT = "http://10.12.220.127:3010/getOutfit?";
+  let URL_WEATHER_OUTFITS = "http://10.12.220.127:3010/getWeatherOutfits";
 
   $scope.outfits = [];
+  $scope.weatherOutfits = [];
 
   $http.get(URL_ALL_OUTFITS).then(function (response) {
     $scope.outfits = response.data;
-    console.log(response);
   });
 
-  // Space for function depending on weather conditions
-  /*
-  $scope.newLocation = function() {
-    let newRawLoc = {};
-    let newLoc ={};
-    $http.get(URL_INSERT_LOC + `newAddress=${$scope.newAddress}&newCity=${$scope.newCity}`)
-      .then(function (response) {
-        newRawLoc = response.data;
-      	
-        newLoc = {"locId": newRawLoc.id, "locAddress": newRawLoc.address, 
-                  "city": newRawLoc.city};
-  	
-
-        $scope.locations.push(newLoc);
-      });
-  }
-  */
-
-  $scope.getOutfitsByWeather = function () {
-    $http
-      .get(
-        URL_CERTAIN_OUTFITS + `temp=${$scope.temp}&weather=${$scope.weather}`
-      )
-      .then(function (response) {
-        $scope.outfits = response.data;
-      });
-  };
-  // Call the function when needed, for example, on button click
-  $scope.getOutfitsByWeather();
+  $http.get(URL_WEATHER_OUTFITS).then(function (response) {
+    $scope.weatherOutfits = response.data;
+  });
 
   $scope.zoom = function (path, alt) {
     wrapper.style.display = "flex";

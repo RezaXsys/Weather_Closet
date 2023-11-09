@@ -85,10 +85,10 @@
             <span ng-click="close()" ng-style="spanX">X</span>
         </div>
         <div ng-style="image_gallery">
-            <!-- <div ng-repeat="outfit in outfits">
+            <div style="display:none;" ng-repeat="outfit in outfits">
                 <img ng-style="image" ng-click="zoom(outfit.img, outfit.weather)" ng-src="{{ outfit.img }}"
                     alt="{{ outfit.weather }}">
-            </div> -->
+            </div>
             <div ng-repeat="outfit in weatherOutfits">
                 <img ng-style="image" ng-click="zoom(outfit.img, outfit.weather)" ng-src="{{ outfit.img }}"
                     alt="{{ outfit.weather }}">
