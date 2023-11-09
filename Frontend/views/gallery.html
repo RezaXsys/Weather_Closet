@@ -56,6 +56,22 @@
                 }
             }
         }
+
+        h1 {
+            padding: 20px 200px;
+        }
+
+        button {
+            display: block;
+            justify-content: center;
+            float: left;
+            margin: 0px 10px;
+            margin-bottom: 20px;
+        }
+
+        #photoButton {
+            margin-left: 30%;
+        }
     </style>
 </head>
 
@@ -78,29 +94,34 @@
     </nav>
     <h1>Gallery</h1>
 
+
     <div ng-controller="OutfitListController">
+        <button ng-style="photo_button" ng-click="takePhoto()" id="photoButton">
+            <img ng-style="img_button" src="asset/camera.png">
+        </button>
+        <button ng-click="displayAll()" ng-style="photo_button">
+            Display all outfits
+        </button>
+        <button ng-click="displayWeather()" ng-style="photo_button">
+            Display outfits of current weather
+        </button>
+
         <div ng-style="imageWrapper" id="wrapper">
             <img ng-style="imageWrap" id="imgWrapper">
             <div id="caption" ng-style="caption"></div>
             <span ng-click="close()" ng-style="spanX">X</span>
         </div>
         <div ng-style="image_gallery">
-            <div style="display:none;" ng-repeat="outfit in outfits">
-                <img ng-style="image" ng-click="zoom(outfit.img, outfit.weather)" ng-src="{{ outfit.img }}"
-                    alt="{{ outfit.weather }}">
-            </div>
-            <div ng-repeat="outfit in weatherOutfits">
+            <div ng-repeat="outfit in outfits" style="display:none;" class="allOutfits">
                 <img ng-style="image" ng-click="zoom(outfit.img, outfit.weather)" ng-src="{{ outfit.img }}"
                     alt="{{ outfit.weather }}">
             </div>
 
+            <div ng-repeat="outfit in weatherOutfits" style="display:block;" class="weatherOutfits">
+                <img ng-style="image" ng-click="zoom(outfit.img, outfit.weather)" ng-src="{{ outfit.img }}"
+                    alt="{{ outfit.weather }}">
+            </div>
         </div>
-
-        <button ng-style="photo_button" ng-click="takePhoto()">
-            <img ng-style="img_button" src="asset/camera.png">
-        </button>
-
-
     </div>
 </body>
 

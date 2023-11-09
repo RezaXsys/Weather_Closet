@@ -42,9 +42,31 @@ locApp.controller("OutfitListController", function ($scope, $http) {
     });
   };
 
+  $scope.displayAll = function () {
+    let all = document.querySelectorAll('.allOutfits');
+    all.forEach(a => {
+      a.style.display = 'block';
+    });
+    let weather = document.querySelectorAll('.weatherOutfits');
+    weather.forEach(a => {
+      a.style.display = 'none';
+    });
+  }
+
+  $scope.displayWeather = function () {
+    let all = document.querySelectorAll('.allOutfits');
+    all.forEach(a => {
+      a.style.display = 'none';
+    });
+    let weather = document.querySelectorAll('.weatherOutfits');
+    weather.forEach(a => {
+      a.style.display = 'block';
+    });
+  }
+
   $scope.image_gallery = {
     width: "80%",
-    margin: "100px auto 50px",
+    margin: "10px auto 50px",
     display: "grid",
     "grid-template-columns": "repeat(auto-fit, minmax(250px, 1fr))",
     "grid-gap": "30px",
@@ -96,6 +118,7 @@ locApp.controller("OutfitListController", function ($scope, $http) {
   $scope.photo_button = {
     "background-color": "gray",
     width: "200px",
+    height: "70px",
   };
 
   $scope.img_button = {
