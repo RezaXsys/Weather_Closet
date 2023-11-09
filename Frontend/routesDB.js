@@ -65,16 +65,13 @@ module.exports = (app, client) => {
                 });
             } else {
                 let weather = JSON.parse(body);
-                console.log(weather["weather"][0]["main"])
                 client.connect(function (err, cl) {
                     if (err) throw err;
                     const db = cl.db("ClothingStorage");
                     query = {
-                        weather: {
-                            description: "Clouds",
-                            // "temperature": { $gt: `${weather.main.temp}` - 2, $lt: `${weather.main.temp}` + 2 }
-                        }
-                    }
+                        "weather.description": weather["weather"][0]["main"],
+                        "weather.temperature": { $gt: weather["main"]["temp"] - 2, $lt: weather["main"]["temp"] + 2 }
+                    };
                     db.collection("outfits")
                         .find(query)
                         .toArray((err, result) => {
