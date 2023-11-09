@@ -53,7 +53,50 @@ module.exports = (app, client) => {
           function roundToTwo(num) {
             return +(Math.round(num + "e+2") + "e-2");
           }
+          let weather = JSON.parse(body);
 
+          client.connect(function (err, cl) {
+            if (err) throw err;
+            const db = cl.db("ClothingStorage");
+            query = {
+              "weather.description": weather["weather"][0]["main"],
+              "weather.temperature": {
+                $gt: weather["main"]["temp"] - 2,
+                $lt: weather["main"]["temp"] + 2,
+              },
+            };
+            db.collection("outfits")
+              .find(query)
+              .toArray((err, result) => {
+                if (err) throw err;
+                let imagePathFromDatabase = "/default/path/to/image.jpg";
+
+                // Assuming result is an array of documents from the "outfits" collection
+                // and each document has a field called "imagePath"
+                if (result.length > 0 && result[0].img) {
+                  imagePathFromDatabase = result[0].img;
+                }
+
+                const weatherFahrenheit = roundToTwo(weatherFahrenheit);
+                res.render("index", {
+                  weather: weather,
+                  place: place,
+                  temp: weatherTemp,
+                  pressure: weatherPressure,
+                  icon: weatherIcon,
+                  description: weatherDescription,
+                  timezone: weatherTimezone,
+                  humidity: humidity,
+                  fahrenheit: weatherFahrenheit,
+                  clouds: clouds,
+                  visibility: visibility,
+                  main: main,
+                  error: null,
+                  imagePathFromDatabase: imagePathFromDatabase,
+                });
+              });
+          });
+          /*
           const imagePathFromDatabase = "/path/to/your/image.jpg";
           weatherFahrenheit = roundToTwo(weatherFahrenheit);
           res.render("index", {
@@ -71,7 +114,7 @@ module.exports = (app, client) => {
             main: main,
             error: null,
             imagePathFromDatabase,
-          });
+          });*/
         }
       }
     });
