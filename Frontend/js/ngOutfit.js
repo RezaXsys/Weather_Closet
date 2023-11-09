@@ -5,13 +5,19 @@ locApp.controller('OutfitListController', function ($scope, $http) {
     //replace localhost with etu-web2 for it to work on the uni's computers or 10.12.220.127 on rpi
     let URL_ALL_OUTFITS = "http://10.12.220.127:3010/getAllOutfits";
     let URL_ONE_OUTFIT = "http://10.12.220.127.fr:3010/getOutfit?";
-    let URL_ID_OUTFITS = "http://10.12.220.127.fr:3010/getOutfits?";
+    let URL_WEATHER_OUTFITS = "http://10.12.220.127.fr:3010/getWeatherOutfits";
+
 
     $scope.outfits = [];
+    $scope.weatherOutfits = [];
 
     $http.get(URL_ALL_OUTFITS).then(function (response) {
         $scope.outfits = response.data;
-        console.log(response)
+    });
+
+    $http.get(URL_WEATHER_OUTFITS).then(function (response) {
+        $scope.weatherOutfits = response.data;
+        console.log(response.data)
     });
 
     $scope.zoom = function (path, alt) {

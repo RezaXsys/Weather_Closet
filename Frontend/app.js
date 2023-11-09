@@ -12,6 +12,7 @@ require("dotenv").config();
 app.use(express.static("public"));
 //app.use(express.static(path.join(__dirname + "/Frontend/asset")));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json())
 app.set("view engine", "ejs");
 
 //-----
