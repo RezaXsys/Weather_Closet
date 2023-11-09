@@ -4,6 +4,8 @@ body {
   margin: 0 auto;
   font-family: "Open Sans", sans-serif;
   /* added background color */
+  background-image: url("../weatherui/background2.png");
+  background-size: cover;
 }
 .container1 {
   width: 100%;
