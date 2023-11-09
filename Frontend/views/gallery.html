@@ -9,94 +9,85 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/ngOutfit.js"></script>
-    <meta
-      name="viewport"
-      content="width=devicewidth, initial-scale=1, shrink-to-fit=no"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <meta name="viewport" content="width=devicewidth, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <title>Document</title>
     <style>
-.navigationWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #222;
-    color: white;
-    text-transform: uppercase;
-    overflow: hidden;
-    width: 100%;
-    height: 50px;
-  
-    .logoWrapper {
-      display: flex;
-  
-      .stylish {
-        font-weight: bold;
-      }
-  
-      .logo {
-        padding-left: 4px;
-        color: cornflowerblue;
-      }
-    }
-  
-    .navigation {
-      display: flex;
-      list-style: none;
-  
-      .listitem {
-        margin-left: 20px;
-        opacity: 1;
-        display: inline-block;
-        list-style: none;
-        color: white;
-        text-decoration: none;
-        transition: all 0.3s ease-in-out;
-      }
-    }
-  }
+        .navigationWrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #222;
+            color: white;
+            text-transform: uppercase;
+            overflow: hidden;
+            width: 100%;
+            height: 50px;
+
+            .logoWrapper {
+                display: flex;
+
+                .stylish {
+                    font-weight: bold;
+                }
+
+                .logo {
+                    padding-left: 4px;
+                    color: cornflowerblue;
+                }
+            }
+
+            .navigation {
+                display: flex;
+                list-style: none;
+
+                .listitem {
+                    margin-left: 20px;
+                    opacity: 1;
+                    display: inline-block;
+                    list-style: none;
+                    color: white;
+                    text-decoration: none;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+        }
     </style>
 </head>
 
 <body>
     <nav class="navigationWrapper">
         <div class="logoWrapper">
-         
-          <span class="stylish">WEATHER</span>
-          <a href="/Index">
-          <span class="logo">Closet</span>
-          </a>
-          
+
+            <span class="stylish">WEATHER</span>
+            <a href="/Index">
+                <span class="logo">Closet</span>
+            </a>
+
         </div>
         <div class="navigation">
-            <li class="listitem" ><a  href='/Gallery'>Gallery</a></li>
-            <li class="listitem"><a   href='/About'>About</a></li>
-          
+            <li class="listitem"><a href='/Gallery'>Gallery</a></li>
+            <li class="listitem"><a href='/About'>About</a></li>
+
         </div>
-    
-      </nav>
+
+    </nav>
     <h1>Gallery</h1>
 
     <div ng-controller="OutfitListController">
         <div ng-style="imageWrapper" id="wrapper">
             <img ng-style="imageWrap" id="imgWrapper">
+            <div id="caption" ng-style="caption"></div>
             <span ng-click="close()" ng-style="spanX">X</span>
         </div>
         <div ng-style="image_gallery">
             <div ng-repeat="outfit in outfits">
-                <img ng-style="image" ng-click="zoom(outfit.img)" ng-src="{{ outfit.img }}">
+                <img ng-style="image" ng-click="zoom(outfit.img, outfit.weather)" ng-src="{{ outfit.img }}"
+                    alt="{{ outfit.weather }}">
             </div>
 
         </div>
