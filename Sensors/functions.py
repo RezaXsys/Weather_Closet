@@ -3,6 +3,8 @@ import glob
 import os
 import pymongo
 import requests, json
+from PIL import Image 
+  
 
 # RFID
 # PortRF = serial.Serial('/dev/ttyAMA0',9600)
@@ -28,6 +30,11 @@ def takePic(picName):
     f = open("/home/pi/Documents/Weather_Closet/Frontend/public/asset/" + picName, "wb")
     f.write(byteArr)
     f.close()
+    img = Image.open("/home/pi/Documents/Weather_Closet/Frontend/public/asset/" + picName) 
+    img = img.rotate(270, expand=True) 
+    img.save("/home/pi/Documents/Weather_Closet/Frontend/public/asset/" + picName)
+
+
 
 # etu-web2.ut-capitole.fr if with raspberry, localhost if on computer
 

@@ -45,6 +45,7 @@ module.exports = (app, client) => {
         .find({})
         .toArray((err, result) => {
           if (err) throw err;
+          result.reverse();
           res.json(result);
         });
     });
