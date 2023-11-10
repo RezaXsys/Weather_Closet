@@ -4,7 +4,7 @@ body {
   margin: 0 auto;
   font-family: "Open Sans", sans-serif;
   /* added background color */
-  background-image: url("../weatherui/background2.png");
+  background-image: url("../weatherui/nasa-CpHNKNRwXps-unsplash.jpg");
   background-size: cover;
 }
 .container1 {
@@ -35,6 +35,7 @@ fieldset {
   border-image-repeat: initial;
   min-width: -webkit-min-content;
   padding: 30px;
+  border-radius: 10px;
 }
 
 .ghost-input,
@@ -49,8 +50,8 @@ p {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  color: #4b545f;
-  background: #fff;
+  color: whitesmoke;
+  background: transparent;
   font-family: Open Sans, Verdana;
   padding: 10px 15px;
   margin: 30px 0px;
@@ -66,6 +67,7 @@ p {
 }
 
 .ghost-button {
+  color: whitesmoke;
   background-color: transparent;
   border: 2px solid #ddd;
   border-radius: 10px;
@@ -83,6 +85,20 @@ p {
   border: 2px solid #515151;
 }
 
+.grid {
+  padding: 0%;
+}
+.place {
+  font-size: 38px;
+  color: cornflowerblue;
+  font-weight: bold;
+}
+
+.p3 {
+  color: whitesmoke;
+  font-size: smaller;
+}
+
 p {
   color: cornflowerblue;
 }
@@ -97,6 +113,10 @@ p {
   &:hover {
     color: white;
   }
+}
+
+.card-deck {
+  background-color: transparent;
 }
 
 .navigationWrapper {

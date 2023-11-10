@@ -2,8 +2,10 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
     Helvetica, sans-serif;
   margin: 0;
-  background: linear-gradient(to bottom, cornflowerblue, rgb(1, 20, 55));
-
+  /*background: linear-gradient(to bottom, cornflowerblue, rgb(1, 20, 55));*/
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)),
+    url("../weatherui/tasos-mansour-_hGPdpyMV-8-unsplash.jpg");
+  background-size: cover;
   /*
   background-image: url("Frontend/public/asset/weatherui/background2.png");
   background-attachment: fixed;
