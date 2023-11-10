@@ -17,6 +17,12 @@ body {
   margin: 0 auto;
   background: transparent;
 }
+.logo {
+  background-size: cover;
+  background-position: center;
+  width: 119%;
+  height: 100%;
+}
 
 fieldset {
   background: transparent;
