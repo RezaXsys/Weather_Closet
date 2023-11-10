@@ -70,14 +70,24 @@ module.exports = (app, client) => {
           query = {
             "weather.description": weather["weather"][0]["main"],
             "weather.temperature": {
-              $gt: weather["main"]["temp"] - 2,
-              $lt: weather["main"]["temp"] + 2,
+              $gt: weather["main"]["temp"] - 3,
+              $lt: weather["main"]["temp"] + 3,
             },
           };
           db.collection("outfits")
             .find(query)
             .toArray((err, result) => {
               if (err) throw err;
+              function distanceToTarget(number, target) {
+                return Math.abs(number - target);
+              }
+              function sortByDistance(a, b) {
+                const distanceA = distanceToTarget(a, weather["weather"][0]["main"]);
+                const distanceB = distanceToTarget(b, weather["weather"][0]["main"]);
+
+                return distanceA - distanceB;
+              }
+              result.sort(sortByDistance).reverse();
               res.json(result);
             });
         });
